@@ -1,0 +1,27 @@
+---
+services:
+  caddy:
+    container_name: caddy-service
+    image: caddy/caddy:2.2.1-alpine
+    build:
+      context: ./caddy
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: unless-stopped
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+  node-app:
+    build:
+      context: ./
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+version: '3.7'
+volumes:
+  caddy_config: 
+  caddy_data: 
