@@ -1,1 +1,8 @@
-{}
+{
+  "custom-field": "this is example",
+  "custom-object": {
+    "custom-line": "what line",
+    "custom-text": "what text"
+  },
+  "custom-list": []
+}
